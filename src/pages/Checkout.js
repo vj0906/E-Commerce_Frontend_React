@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector,useDispatch } from 'react-redux';
+import {useNavigate } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { clearCart } from '../redux/cartSlice';
 
 const Checkout = () => {
   const cart = useSelector(state => state.cart.items);
+  const navigate = useNavigate()
+  const dispatch = useDispatch();
   const totalPrice = cart.reduce((total, item) => total + item.quantity * item.price, 0);
   const [formData, setFormData] = useState({
     name: '',
@@ -20,9 +24,10 @@ const Checkout = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert("Order Placed")
+    alert("Yay! Order Placed Successfully")
     console.log('Order Submitted', formData);
-    // Handle order submission logic here
+    dispatch(clearCart());
+    navigate('/');
   };
 
   return (

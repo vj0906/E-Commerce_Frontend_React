@@ -17,7 +17,7 @@ const ProductCard = ({ product }) => {
         <img src={product.image} className="card-img-top" alt={product.name} />
         <div className="card-body">
           <h5 className="card-title">{product.name}</h5>
-          <p className="card-text">${product.price}</p>
+          <p className="card-text">Rs.{product.price}</p>
           <Link to={`/product/${product._id}`} className="btn btn-secondary" style={{marginRight:'10px'}}><i class="bi bi-info-circle-fill"></i> Details</Link>
           <button onClick={handleAddToCart} className="btn btn-outline-secondary"><i class="bi bi-cart-plus"></i> Add to Cart</button>
         </div>
